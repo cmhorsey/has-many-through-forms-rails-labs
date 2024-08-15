@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
+    @user = User.new
+    @comment = Comment.new
   end
 
   def index
@@ -16,6 +18,19 @@ class PostsController < ApplicationController
     redirect_to post
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def post_params
@@ -24,7 +39,7 @@ class PostsController < ApplicationController
       :content,
       category_ids:[],
       categories_attributes: [:name],
-      user_ides:[],
+      user_ids:[],
       user_attributes: [:name])
   end
 end
