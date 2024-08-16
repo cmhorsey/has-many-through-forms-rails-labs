@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    user = User.new
   end
 
   def create
-    @user = User.find_or_create_by(username: user_params[:username])
+    user = User.find_or_create_by(username: user_params[:username])
   end
 
   private

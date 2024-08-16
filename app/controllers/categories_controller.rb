@@ -4,6 +4,6 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.find_or_create_by
+    category = Category.find_or_create_by
   end
 end
